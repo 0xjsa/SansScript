@@ -1,0 +1,21 @@
+type Owner @entity {
+  id: ID!
+  newsletters: [Newsletter!] @derivedFrom(field: "newsletterOwner")
+  newslettersAmount: BigInt!
+  isVerifiedHuman: Boolean!
+}
+
+type Newsletter @entity {
+  id: ID!
+  newsletterOwner: Owner! 
+  newsletterNonce: Int! # uint8
+  image: String! # string
+  title: String! # string
+  description: String! # string
+  token: String!
+  pricePerMonth: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
